@@ -1,6 +1,8 @@
 # Programa Climático
 
-Este projeto é uma aplicação para análise de dados climáticos, permitindo a visualização e análise de informações como precipitação, temperatura mínima e máxima, umidade e vento a partir de um conjunto de dados em formato CSV.
+Este projeto foi desenvolvido como parte da disciplina **Lógica e Programação de Computadores** do **Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas: Full-Stack e Mobile** da **PUCRS**.
+
+O objetivo do programa é realizar a análise de dados climáticos, permitindo a visualização e análise de informações como precipitação, temperatura mínima e máxima, umidade e vento a partir de um conjunto de dados em formato CSV.
 
 ## Estrutura do Projeto
 
