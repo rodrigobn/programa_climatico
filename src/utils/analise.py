@@ -45,6 +45,37 @@ def calcular_medias_temp_minima(dados, mes):
     
     return medias
 
+def calcular_medias_temp_minima_2006_2016(dados, mes):
+    """Calcula as médias de temperatura mínima para um mês específico no período de 2006 a 2016.
+    
+    Args:
+        dados (list): Lista de dicionários com dados climáticos
+        mes (int): Mês para o qual calcular as médias (1-12)
+        
+    Returns:
+        dict: Dicionário com chaves no formato 'mês+ano' e valores como médias de temperatura mínima
+    """
+    if not dados:
+        print("Nenhum dado disponível para análise.")
+        return {}
+    
+    if not 1 <= mes <= 12:
+        raise ValueError("Mês deve estar entre 1 e 12")
+    
+    medias = {}
+    for ano in range(2006, 2017):  # Intervalo de 2006 a 2016
+        temps = [d['temp_min'] for d in dados if d['ano'] == ano and d['mes'] == mes]
+        if temps:
+            nome_mes = {
+                1: 'janeiro', 2: 'fevereiro', 3: 'março', 4: 'abril',
+                5: 'maio', 6: 'junho', 7: 'julho', 8: 'agosto',
+                9: 'setembro', 10: 'outubro', 11: 'novembro', 12: 'dezembro'
+            }[mes]
+            chave = f"{nome_mes}{ano}"
+            medias[chave] = sum(temps) / len(temps)
+    
+    return medias
+
 def exibir_medias_temp_minima(medias, mes):
     """Exibe as médias de temperatura mínima calculadas."""
     if not medias:

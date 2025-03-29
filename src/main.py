@@ -1,6 +1,6 @@
 from utils.carregamento import carregar_dados
 from utils.visualizacao import visualizar_dados
-from utils.analise import mes_mais_chuvoso, calcular_medias_temp_minima, exibir_medias_temp_minima, calcular_media_geral_temp_minima
+from utils.analise import mes_mais_chuvoso, calcular_medias_temp_minima, exibir_medias_temp_minima, calcular_media_geral_temp_minima, calcular_medias_temp_minima_2006_2016
 from utils.graficos import plotar_grafico_temp_minima
 
 
@@ -61,10 +61,19 @@ def main():
                     print("Erro: Mês deve estar entre 1 e 12.")
                     continue
                     
-                medias = calcular_medias_temp_minima(dados, mes)
-                exibir_medias_temp_minima(medias, mes)
-                plotar_grafico_temp_minima(medias, mes)
-                calcular_media_geral_temp_minima(medias)
+                medias = calcular_medias_temp_minima_2006_2016(dados, mes)
+                if medias:
+                    print("\nMédias de Temperatura Mínima (2006-2016):")
+                    for chave, media in medias.items():
+                        print(f"{chave}: {media:.2f}°C")
+                    
+                    # Geração do gráfico
+                    plotar_grafico_temp_minima(medias, mes)
+                    
+                    # Cálculo da média geral
+                    calcular_media_geral_temp_minima(medias)
+                else:
+                    print("Não há dados disponíveis para o período informado.")
             except ValueError:
                 print("Erro: Digite um número válido para o mês.")
             exibir_separador("Fim da Análise")

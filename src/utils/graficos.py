@@ -12,17 +12,17 @@ def plotar_grafico_temp_minima(medias, mes):
         9: 'Setembro', 10: 'Outubro', 11: 'Novembro', 12: 'Dezembro'
     }[mes]
     
-    anos = sorted(medias.keys())
-    valores = [medias[ano] for ano in anos]
+    anos = [int(chave[-4:]) for chave in medias.keys()]
+    valores = list(medias.values())
     
     plt.figure(figsize=(12, 6))
-    bars = plt.bar(range(len(anos)), valores, color='skyblue')
+    bars = plt.bar(anos, valores, color='skyblue')
     
     # Adicionar rótulos e título
-    plt.title(f'Média de Temperatura Mínima - {nome_mes} ({min(anos)}-{max(anos)})', fontsize=14)
+    plt.title(f'Média de Temperatura Mínima - {nome_mes} (2006-2016)', fontsize=14)
     plt.xlabel('Ano', fontsize=12)
     plt.ylabel('Temperatura Mínima Média (°C)', fontsize=12)
-    plt.xticks(range(len(anos)), [str(ano) for ano in anos], rotation=45)
+    plt.xticks(anos, rotation=45)
     
     # Adicionar valores nas barras
     for bar in bars:
