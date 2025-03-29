@@ -1,0 +1,2 @@
+# Biblioteca para geração de gráficos
+matplotlib==3.8.0
